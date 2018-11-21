@@ -77,9 +77,9 @@ int main()
 			arguments.push_back("action");
 			arguments.push_back("eosdacrandom");
 			arguments.push_back("sendhash");
-			arguments.push_back(string("{\"owner\":\"seed1111111") + lexical_cast<char>('a' + i) + "\",\"hash\":\"" + sha256 + "\"}");
+			arguments.push_back(string("{\"owner\":\"seed1111111") + static_cast<char>('a' + i) + "\",\"hash\":\"" + sha256 + "\"}");
 			arguments.push_back("-p");
-			arguments.push_back("seed1111111" + lexical_cast<char>('a' + i));
+			arguments.push_back("seed1111111" + static_cast<char>('a' + i));
 			handler = boost::shared_ptr<child>(new child(search_path("cleos"),arguments));
 			handler->wait();
 			if(EXIT_SUCCESS != handler->exit_code()) cout<<"sendhash failed!"<<endl;
@@ -99,9 +99,9 @@ int main()
 			arguments.push_back("action");
 			arguments.push_back("eosdacrandom");
 			arguments.push_back("sendseed");
-			arguments.push_back(string("{\"owner\":\"seed1111111") + lexical_cast<char>('a' + i) + "\",\"seed\":" + lexical_cast<string>(r) + "}");
+			arguments.push_back(string("{\"owner\":\"seed1111111") + static_cast<char>('a' + i) + "\",\"seed\":" + lexical_cast<string>(r) + "}");
 			arguments.push_back("-p");
-			arguments.push_back("seed1111111" + lexical_cast<char>('a' + i));
+			arguments.push_back("seed1111111" + static_cast<char>('a' + i));
 			handler = boost::shared_ptr<child>(new child(search_path("cleos"),arguments));
 			handler->wait();
 			if(EXIT_SUCCESS != handler->exit_code()) cout<<"sendseed failed! will redo it."<<endl;
